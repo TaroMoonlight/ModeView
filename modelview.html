@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>3D Viewer – Комета</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+  <canvas id="mainCanvas"></canvas>
+  <button id="debugBtn">Отладка</button>
+  <div id="axesControl">
+    <label><input type="checkbox" id="chkAxisX" checked> Ось X</label>
+    <label><input type="checkbox" id="chkAxisY" checked> Ось Y</label>
+    <label><input type="checkbox" id="chkAxisZ" checked> Ось Z</label>
+  </div>
+  <div id="debugView">
+    <div class="debug-cell" id="cellPersp"><canvas></canvas>
+      <div class="label">Перспектива</div>
+    </div>
+    <div class="debug-cell" id="cellTop"><canvas></canvas>
+      <div class="label">Сверху</div>
+    </div>
+    <div class="debug-cell" id="cellLeft"><canvas></canvas>
+      <div class="label">Слева</div>
+    </div>
+    <div class="debug-cell" id="cellFront"><canvas></canvas>
+      <div class="label">Спереди</div>
+    </div>
+  </div>
+
+  <div id="editorContainer" style="display:none; position:fixed; bottom:10px; left:10px; z-index:199;">
+    <canvas id="editorCanvas" width="256" height="256" style="border:1px solid #fff; background:#000;"></canvas>
+  </div>
+
+  <script src="spectrjs/spector.bundle.js"></script>
+  <script src="0.8/config.js"></script>
+  <script src="0.10/shadersr.js"></script>
+  <script src="0.5/math.js"></script>
+  <script src="0.1/camera.js"></script>
+  <script src="0.9/loader.js"></script>
+  <script src="0.9/renderer.js"></script>
+  <script src="0.5/snowParticles.js"></script>
+  <script src="0.6/skyGenerator.js"></script>
+  <script src="0.7/textureEditor.js"></script>
+  <script src="0.7/input.js"></script>
+  <script src="0.1/mobileInput.js"></script>
+  <script src="0.4/debugMode.js"></script>
+  <script src="0.8/ui.js"></script>
+  <script src="0.10/scene.js"></script>
+  <script src="0.8/mobileControl.js"></script>
+  <script src="0.9/app.js"></script>
+</body>
+
+</html>

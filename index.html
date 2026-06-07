@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модели – Комета</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            background: #1a1a2e;
+            color: #eee;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .card {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            width: 180px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card a {
+            color: #e94560;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .card p {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🪐 3D Models Viewer</h1>
+    <div class="gallery" id="modelList">
+        <!-- Модели будут здесь -->
+    </div>
+
+    <script>
+        function clearModels() {
+            localStorage.removeItem('customModels');
+            location.reload();
+        }
+
+        // Список моделей (можно расширять)
+        const defaultModels = [
+            { name: 'Альтумар', file: 'altrum.glb' },
+            { name: 'Вириди ', file: 'viridy.glb' },
+            { name: '0', file: 'model8.glb' }
+        ];
+
+        // Загружаем сохранённые модели из localStorage
+        /*
+        let savedModels = [];
+        try {
+            savedModels = JSON.parse(localStorage.getItem('customModels') || '[]');
+        } catch (e) { }
+        */
+        const allModels = [...defaultModels];//, ...savedModels];
+
+        function renderModels() {
+            const container = document.getElementById('modelList');
+            container.innerHTML = allModels.map(m => `
+                <div class="card">
+                    <a href="modelview.html?model=${encodeURIComponent(m.file)}">${m.name}</a>
+                    <p>${m.file}</p>
+                </div>
+            `).join('');
+        }
+
+        function addModel() {
+            const name = document.getElementById('newModelName').value.trim();
+            //const file = document.getElementById('newModelFile').value.trim();
+            if (name && file) {
+                allModels.push({ name, file });
+                //savedModels.push({ name, file });
+                //localStorage.setItem('customModels', JSON.stringify(savedModels));
+                renderModels();
+                document.getElementById('newModelName').value = '';
+                //document.getElementById('newModelFile').value = '';
+            }
+        }
+
+        renderModels();
+    </script>
+</body>
+
+</html>
