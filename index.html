@@ -82,7 +82,9 @@
         const defaultModels = [
             { name: 'Альтумар', file: 'altrum.glb' },
             { name: 'Вириди ', file: 'viridy.glb' },
-            { name: '0', file: 'model8.glb' }
+            { name: '0', file: 'model8.glb' },
+            { name: '1', file: 'model10.glb' },
+            { name: '2', file: 'model11.glb' }
         ];
 
         // Загружаем сохранённые модели из localStorage
@@ -99,6 +101,7 @@
             container.innerHTML = allModels.map(m => `
                 <div class="card">
                     <a href="modelview.html?model=${encodeURIComponent(m.file)}">${m.name}</a>
+                    <p>${m.file}</p>
                 </div>
             `).join('');
         }
