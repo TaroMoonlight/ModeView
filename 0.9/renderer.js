@@ -2,8 +2,8 @@
 class SimpleRenderer {
     constructor(canvas) {
         this.canvas = canvas;
-        this.gl = canvas.getContext('webgl', { antialias: true })
-            || canvas.getContext('experimental-webgl', { antialias: true });
+        this.gl = canvas.getContext('webgl')
+            || canvas.getContext('experimental-webgl');
         if (!this.gl) throw new Error('WebGL 1.0 не поддерживается');
 
         const gl = this.gl;
