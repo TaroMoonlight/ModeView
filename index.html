@@ -101,7 +101,7 @@
             container.innerHTML = allModels.map(m => `
                 <div class="card">
                     <a href="modelview.html?model=${encodeURIComponent(m.file)}">${m.name}</a>
-                    <p>${m.file}</p>
+                    
                 </div>
             `).join('');
         }
